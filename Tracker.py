@@ -47,13 +47,11 @@ def vr_get(path, lic):
     with open(path, mode = 'rb') as file:
         fileContent = file.read()
     vr = struct.unpack_from('>H', fileContent, offset=0xB0 + lic)
-    print(vr[0])
     return vr[0]
 
 def main(data, lic, save, rc, tc):
 
     t1 = os.path.getmtime(sys.argv[1])
-    print(t1)
     orgVR = vr_data["VR"][vr_data.index[-1]]
     ogRC = rc
     sames = 0
@@ -65,8 +63,8 @@ def main(data, lic, save, rc, tc):
         if(t1 == t2):
             sames+=1
             t2 = os.path.getmtime(sys.argv[1])
-            print('check\n')
-            time.sleep(30)
+            print('check')
+            time.sleep(20)
         else:
             sames = 0
             t1 = t2
@@ -81,9 +79,11 @@ def main(data, lic, save, rc, tc):
                 print(track+ " " + str(nVR))
                 data.loc[len(data.index)] = [len(data.index), nVR, track,  nVR - data["VR"][data.index[-1]]]
                 # data = np.append(data, [nVR])
+            else:
+                print("new")
 
 
-            time.sleep(20)
+            time.sleep(40)
     data.to_csv("vrData/" + save, index=False)
     display(data)
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         print(i)
 
     vr_data = pd.read_csv("vrData/" + saves[lic])
-    print( vr_data["VR"][vr_data.index[-1]])
+    print("current vr: " + str(vr_data["VR"][vr_data.index[-1]]))
     track_counts , race_count = get_track_counts(sys.argv[1], licences[lic])
     track_played(track_counts, licences[lic])
 
