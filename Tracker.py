@@ -1,9 +1,7 @@
-import numpy as np
 import struct
 import sys
 import os
 import time
-import signal
 import seaborn as sns
 import pandas as pd
 from matplotlib import pyplot as plt
@@ -68,7 +66,7 @@ def main(data, lic, save, rc, tc):
             sames+=1
             t2 = os.path.getmtime(sys.argv[1])
             print('check\n')
-            time.sleep(1)
+            time.sleep(30)
         else:
             sames = 0
             t1 = t2
@@ -107,7 +105,7 @@ if __name__ == "__main__":
     for i in sys.argv:
         print(i)
 
-    vr_data = pd.read_csv('dataframe.csv')
+    vr_data = pd.read_csv("vrData/" + saves[lic])
     print( vr_data["VR"][vr_data.index[-1]])
     track_counts , race_count = get_track_counts(sys.argv[1], licences[lic])
     track_played(track_counts, licences[lic])
