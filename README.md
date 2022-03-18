@@ -8,7 +8,7 @@
 - time
 - seaborn
 - pandas 
-##### if you do not a package installed you can install it using the command:
+#### if you do not a package installed you can install it using the command:
 - pip install (*package name*)
 ## Running the program
 **You will need 2 things**
@@ -20,7 +20,7 @@
    - 3 - bottom left
    - 4 - bottom right
 
-##### Navigate into the directory where you cloned the repo
+#### Navigate into the directory where you cloned the repo
 **Run the command**
 python3 Tracker.py (path to rksys.dat) licenceNumber
 - ex: python3 Tracker.py F:\riivolution\save\RMCE\rksys.dat 2
